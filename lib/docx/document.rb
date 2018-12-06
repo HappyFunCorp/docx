@@ -24,7 +24,7 @@ module Docx
       @replace = {}
       @zip = Zip::File.open(path)
       @document_xml = @zip.read('word/document.xml')
-      @document_xml = @document_xml.gsub('<w:tab/></w:r>','</w:r><w:r><w:t>TTAABB</w:t></w:r>')
+      @document_xml = @document_xml.gsub('<w:tab/>','<w:t>TTAABB</w:t>')
       @doc = Nokogiri::XML(@document_xml)
       @styles_xml = @zip.read('word/styles.xml')
       @styles = Nokogiri::XML(@styles_xml)
